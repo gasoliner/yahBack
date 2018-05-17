@@ -1,5 +1,7 @@
 package cn.yah.po;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 import java.util.Date;
 
 public class Mail {
@@ -13,6 +15,7 @@ public class Mail {
 
     private String content;
 
+    @JSONField(format = "yyyy-MM-dd HH:mm:ss")
     private Date time;
 
     public Integer getMaid() {

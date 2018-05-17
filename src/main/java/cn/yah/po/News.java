@@ -1,5 +1,7 @@
 package cn.yah.po;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 import java.util.Date;
 
 public class News {
@@ -9,6 +11,7 @@ public class News {
 
     private String content;
 
+    @JSONField(format = "yyyy-MM-dd HH:mm:ss")
     private Date publishtime;
 
     public Integer getNid() {

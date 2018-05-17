@@ -27,7 +27,20 @@ public class EnterpriseServiceImpl implements EnterpriseService {
     @Override
     public List<Enterprise> list(Page page) {
         PageHelper.startPage(page.getPage(), page.getRows());
-        List<Enterprise> list = enterpriseMapper.selectByExample(new EnterpriseExample());
+        EnterpriseExample example = new EnterpriseExample();
+        List<Enterprise> list = enterpriseMapper.selectByExample(example);
+        PageInfo<Enterprise> pageInfo = new PageInfo<>(list);
+        this.total = pageInfo.getTotal();
+        return list;
+    }
+
+    @Override
+    public List<Enterprise> unlock_list(Page page) {
+        PageHelper.startPage(page.getPage(), page.getRows());
+        EnterpriseExample example = new EnterpriseExample();
+        EnterpriseExample.Criteria criteria = example.createCriteria();
+        criteria.andIslockEqualTo(1);
+        List<Enterprise> list = enterpriseMapper.selectByExample(example);
         PageInfo<Enterprise> pageInfo = new PageInfo<>(list);
         this.total = pageInfo.getTotal();
         return list;

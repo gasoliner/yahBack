@@ -24,6 +24,7 @@ public class VoEnterprise extends Enterprise {
         this.setEmail(enterprise.getEmail());
         this.setImg(enterprise.getImg());
         this.setInfo(enterprise.getInfo());
+        this.setIslock(enterprise.getIslock());
     }
 
     public VoEnterprise() {}

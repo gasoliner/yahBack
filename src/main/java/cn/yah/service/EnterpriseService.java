@@ -12,6 +12,8 @@ import java.util.List;
 public interface EnterpriseService {
     List<Enterprise> list(Page page);
 
+    List<Enterprise> unlock_list(Page page);
+
     int insert(Enterprise record);
 
     int delete(Integer id);

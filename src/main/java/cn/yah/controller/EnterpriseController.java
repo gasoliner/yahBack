@@ -46,7 +46,7 @@ public class EnterpriseController {
     @ResponseBody
     public String getList(Page page){
         DataGrid dataGrid = new DataGrid();
-        dataGrid.setRows(enterpriseService.vo(enterpriseService.list(page)));
+        dataGrid.setRows(enterpriseService.vo(enterpriseService.unlock_list(page)));
         dataGrid.setTotal(enterpriseService.count());
         return JSON.toJSONString(dataGrid);
     }

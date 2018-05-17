@@ -5,6 +5,7 @@ import cn.yah.po.Recruit;
 import cn.yah.po.RecruitExample;
 import cn.yah.po.Page;
 import cn.yah.service.CategoryService;
+import cn.yah.service.EnterpriseService;
 import cn.yah.service.RecruitService;
 import cn.yah.vo.VoRecruit;
 import com.github.pagehelper.PageHelper;
@@ -21,6 +22,9 @@ public class RecruitServiceImpl implements RecruitService {
 
     @Autowired
     CategoryService categoryService;
+
+    @Autowired
+    EnterpriseService enterpriseService;
 
     @Autowired
     RecruitMapper recruitMapper;
@@ -64,7 +68,7 @@ public class RecruitServiceImpl implements RecruitService {
                 list) {
             VoRecruit voRecruit = new VoRecruit(recruit);
             voRecruit.setVoCid(categoryService.selectByPrimaryKey(voRecruit.getRid()).getName());
-            voRecruit.setVoEid("<a href = \"#\" onclick=\"showRecruitPic('" + voRecruit.getEid() + "')\">查看</a>");
+            voRecruit.setVoEid(enterpriseService.selectByPrimaryKey(voRecruit.getEid()).getName());
             list1.add(voRecruit);
         }
         return list1;

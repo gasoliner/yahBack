@@ -161,8 +161,211 @@ function lockEnterprise(id) {
     })
 }
 
+function newJobfair() {
+    $("#fm").form("clear");
+    $("#JobfairDialog").dialog("open").dialog("setTitle","新建");
+    url = "/jobfair/addition";
+}
+function editJobfair() {
+    var row = $("#dg").datagrid("getSelected");
+    if (row){
+        $("#JobfairDialog").dialog("open").dialog("setTitle","编辑");
+        $("#fm").form("load",row);
+        url = "/jobfair/updates/"+row.jfid;
+    }
+}
+function destroyJobfair() {
+    var row = $("#dg").datagrid("getSelected");
+    if (row){
+        $.messager.confirm("Confirm","确定要删除这条记录吗",function (r) {
+            if (r){
+                $("#dfm").form("submit",{
+                    url:"/jobfair/deletion/"+row.jfid,
+                    success: function (res) {
+                        alert(res);
+                        $("#JobfairDialog").dialog("close");
+                        $("#dg").datagrid("reload")
+                    }
+                })
+            }
+        })
+    }
+}
+function saveJobfair() {
+    $("#fm").form("submit",{
+        url:url,
+        success: function (res) {
+            alert(res);
+            $("#JobfairDialog").dialog("close");
+            $('#dg').datagrid("reload");
+        }
+    })
+}
+function showJobfair() {
+    var row = $("#dg").datagrid("getSelected");
+    if (row){
+        $("#showJobfairDialog").dialog("open").dialog("setTitle",row.title);
+        $("#eid_content").html(row.voEid);
+        $("#name_content").html(row.name);
+        $("#content_content").html(row.content);
+    }
+}
 
+function newNews() {
+    $("#fm").form("clear");
+    $("#NewsDialog").dialog("open").dialog("setTitle","新建");
+    url = "/news/addition";
+}
+function editNews() {
+    var row = $("#dg").datagrid("getSelected");
+    if (row){
+        $("#NewsDialog").dialog("open").dialog("setTitle","编辑");
+        $("#fm").form("load",row);
+        url = "/news/updates/"+row.nid;
+    }
+}
+function destroyNews() {
+    var row = $("#dg").datagrid("getSelected");
+    if (row){
+        $.messager.confirm("Confirm","确定要删除这条记录吗",function (r) {
+            if (r){
+                $("#dfm").form("submit",{
+                    url:"/news/deletion/"+row.nid,
+                    success: function (res) {
+                        alert(res);
+                        $("#NewsDialog").dialog("close");
+                        $("#dg").datagrid("reload")
+                    }
+                })
+            }
+        })
+    }
+}
+function saveNews() {
+    $("#fm").form("submit",{
+        url:url,
+        success: function (res) {
+            alert(res);
+            $("#NewsDialog").dialog("close");
+            $('#dg').datagrid("reload");
+        }
+    })
+}
+function showNews() {
+    var row = $("#dg").datagrid("getSelected");
+    if (row){
+        $("#showNewsDialog").dialog("open").dialog("setTitle",row.title);
+        $("#name_content").html(row.name);
+        $("#content_content").html(row.content);
+        $("#publishtime_content").html(row.publishtime);
+    }
+}
 
+function newInterviewskill() {
+    $("#fm").form("clear");
+    $("#InterviewskillDialog").dialog("open").dialog("setTitle","新建");
+    url = "/interviewskill/addition";
+}
+function editInterviewskill() {
+    var row = $("#dg").datagrid("getSelected");
+    if (row){
+        $("#InterviewskillDialog").dialog("open").dialog("setTitle","编辑");
+        $("#fm").form("load",row);
+        url = "/interviewskill/updates/"+row.iid;
+    }
+}
+function destroyInterviewskill() {
+    var row = $("#dg").datagrid("getSelected");
+    if (row){
+        $.messager.confirm("Confirm","确定要删除这条记录吗",function (r) {
+            if (r){
+                $("#dfm").form("submit",{
+                    url:"/interviewskill/deletion/"+row.iid,
+                    success: function (res) {
+                        alert(res);
+                        $("#InterviewskillDialog").dialog("close");
+                        $("#dg").datagrid("reload")
+                    }
+                })
+            }
+        })
+    }
+}
+function saveInterviewskill() {
+    $("#fm").form("submit",{
+        url:url,
+        success: function (res) {
+            alert(res);
+            $("#InterviewskillDialog").dialog("close");
+            $('#dg').datagrid("reload");
+        }
+    })
+}
+function showInterviewskill() {
+    var row = $("#dg").datagrid("getSelected");
+    if (row){
+        $("#showInterviewskillDialog").dialog("open").dialog("setTitle",row.title);
+        $("#name_content").html(row.name);
+        $("#content_content").html(row.content);
+        $("#publishtime_content").html(row.publishtime);
+    }
+}
+
+function newMember() {
+    $("#fm").form("clear");
+    $("#MemberDialog").dialog("open").dialog("setTitle","新建");
+    url = "/member/addition";
+}
+function editMember() {
+    var row = $("#dg").datagrid("getSelected");
+    if (row){
+        $("#MemberDialog").dialog("open").dialog("setTitle","编辑");
+        $("#fm").form("load",row);
+        url = "/member/updates/"+row.mid;
+    }
+}
+function destroyMember() {
+    var row = $("#dg").datagrid("getSelected");
+    if (row){
+        $.messager.confirm("Confirm","确定要删除这条记录吗",function (r) {
+            if (r){
+                $("#dfm").form("submit",{
+                    url:"/member/deletion/"+row.mid,
+                    success: function (res) {
+                        alert(res);
+                        $("#MemberDialog").dialog("close");
+                        $("#dg").datagrid("reload")
+                    }
+                })
+            }
+        })
+    }
+}
+function saveMember() {
+    $("#fm").form("submit",{
+        url:url,
+        success: function (res) {
+            alert(res);
+            $("#MemberDialog").dialog("close");
+            $('#dg').datagrid("reload");
+        }
+    })
+}
+function showMember() {
+    var row = $("#dg").datagrid("getSelected");
+    if (row){
+        $("#showMemberDialog").dialog("open").dialog("setTitle",row.title);
+        $("#mid_content").html(row.mid);
+        $("#name_content").html(row.name);
+        $("#phone_content").html(row.phone);
+        $("#email_content").html(row.email);
+        $("#age_content").html(row.age);
+        $("#university_content").html(row.university);
+        $("#point_content").html(row.point);
+        $("#idnumber_content").html(row.idnumber);
+        $("#voResume_content").html(row.voResume);
+    }
+}
 
 
 

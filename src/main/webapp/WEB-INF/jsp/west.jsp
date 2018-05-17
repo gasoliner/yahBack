@@ -27,15 +27,15 @@
             <a href="#" class="easyui-linkbutton" onclick="addTab('企业管理','enterprise_manage')">企业管理</a>
         </div>
         <div class="menu-last">
-            <a href="#" class="easyui-linkbutton" onclick="addTab('会员管理','hotel_kind_manage')">会员管理</a>
+            <a href="#" class="easyui-linkbutton" onclick="addTab('会员管理','member_manage')">会员管理</a>
         </div>
     </div>
     <div title="站点相关管理" iconCls="icon-man" style="overflow: auto;padding: 10px;">
         <div class="menu-last">
-            <a href="#" class="easyui-linkbutton" onclick="addTab('新闻管理','special_manage')">新闻管理</a>
+            <a href="#" class="easyui-linkbutton" onclick="addTab('新闻管理','news_manage')">新闻管理</a>
         </div>
         <div class="menu-last">
-            <a href="#" class="easyui-linkbutton" onclick="addTab('面试技巧管理','special_manage')">面试技巧管理</a>
+            <a href="#" class="easyui-linkbutton" onclick="addTab('面试技巧管理','interviewskill_manage')">面试技巧管理</a>
         </div>
         <div class="menu-last">
             <a href="#" class="easyui-linkbutton" onclick="addTab('岗位留言管理','special_manage')">岗位留言管理</a>

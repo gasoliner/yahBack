@@ -26,7 +26,7 @@
             <th field="email" width="50">官方邮箱</th>
             <th field="info" width="50">企业简介</th>
             <th field="voImg" width="50">企业图片</th>
-            <th field="voIslock" width="50">通过审批</th>
+            <th field="voIslock" width="50">操作</th>
         </tr>
         </thead>
     </table>

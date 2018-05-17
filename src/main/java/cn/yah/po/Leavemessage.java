@@ -1,5 +1,7 @@
 package cn.yah.po;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 import java.util.Date;
 
 public class Leavemessage {
@@ -9,6 +11,7 @@ public class Leavemessage {
 
     private String content;
 
+    @JSONField(format = "yyyy-MM-dd HH:mm:ss")
     private Date publishtime;
 
     private String publisher;
