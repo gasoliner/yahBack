@@ -46,7 +46,7 @@
             <a href="#" class="easyui-linkbutton" onclick="addTab('岗位类别管理','category_manage')">岗位类别管理</a>
         </div>
         <div class="menu-last">
-            <a href="#" class="easyui-linkbutton" onclick="addTab('站内邮箱管理','hotel_kind_manage')">站内邮箱管理</a>
+            <a href="#" class="easyui-linkbutton" onclick="addTab('站内邮箱管理','mail_manage')">站内邮箱管理</a>
         </div>
     </div>
     <div title="个人信息管理" iconCls="icon-mini-edit" selected="true" style="padding:10px;">

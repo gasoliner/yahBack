@@ -7,7 +7,7 @@ public class Apply {
 
     private Integer rid;
 
-    private String var;
+    private String var = "未处理";
 
     public Integer getAid() {
         return aid;

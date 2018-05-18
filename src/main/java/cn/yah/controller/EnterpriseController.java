@@ -5,6 +5,7 @@ import cn.yah.po.Page;
 import cn.yah.po.Enterprise;
 import cn.yah.service.EnterpriseService;
 import cn.yah.util.PageUtil;
+import cn.yah.util.StringUtil;
 import com.alibaba.fastjson.JSON;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -54,6 +55,9 @@ public class EnterpriseController {
     @RequestMapping("/addition")
     @ResponseBody
     public String add(Enterprise enterprise, @RequestParam("img_file") CommonsMultipartFile file, HttpServletRequest request) {
+        if (!StringUtil.isNotEmpty(enterprise.getPassword())) {
+            enterprise.setPassword("000000");
+        }
         try {
             if (file.getSize() > 0) {
                 enterprise.setImg(PageUtil.uploadAnnex(request,file,"enterprise",enterprise.getName()));

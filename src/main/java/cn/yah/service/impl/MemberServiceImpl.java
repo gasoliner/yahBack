@@ -5,11 +5,13 @@ import cn.yah.po.Page;
 import cn.yah.po.Member;
 import cn.yah.po.MemberExample;
 import cn.yah.service.MemberService;
+import cn.yah.vo.VoMember;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -56,6 +58,18 @@ public class MemberServiceImpl implements MemberService {
     @Override
     public Member selectByPrimaryKey(Integer id) {
         return memberMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public List<VoMember> vo(List<Member> list) {
+        List<VoMember> list1 = new ArrayList<>();
+        for (Member member:
+                list) {
+            VoMember voMember = new VoMember(member);
+            voMember.setVoResume("<a href = \"#\" onclick=\"showMemberResume('" + member.getMid() + "')\">查看简历</a>");
+            list1.add(voMember);
+        }
+        return list1;
     }
 
 }
