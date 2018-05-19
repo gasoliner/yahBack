@@ -5,6 +5,7 @@ import cn.yah.po.Page;
 import cn.yah.po.Jobfair;
 import cn.yah.service.JobfairService;
 import com.alibaba.fastjson.JSON;
+import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,15 +30,20 @@ public class JobfairController {
     @ResponseBody
     public String getList(Page page){
         DataGrid dataGrid = new DataGrid();
-        dataGrid.setRows(jobfairService.vo(jobfairService.list(page)));
-        dataGrid.setTotal(jobfairService.count());
+        if (SecurityUtils.getSubject().hasRole("1")) {
+            dataGrid.setRows(jobfairService.vo(jobfairService.list(page)));
+            dataGrid.setTotal(jobfairService.count());
+        } else {
+            dataGrid.setRows(jobfairService.vo(jobfairService.listByEid(page,Integer.parseInt((String) SecurityUtils.getSubject().getPrincipal()))));
+            dataGrid.setTotal(jobfairService.count());
+        }
         return JSON.toJSONString(dataGrid);
     }
 
     @RequestMapping("/addition")
     @ResponseBody
     public String add(Jobfair jobfair) {
-        jobfair.setEid(1001);
+        jobfair.setEid(Integer.parseInt((String) SecurityUtils.getSubject().getPrincipal()));
         try {
             jobfairService.insert(jobfair);
             return JSON.toJSONString("操作成功");

@@ -2,16 +2,20 @@ package cn.yah.controller;
 
 import cn.yah.po.*;
 import cn.yah.service.ApplyService;
+import cn.yah.service.EnterpriseService;
 import cn.yah.service.MailService;
 import cn.yah.service.RecruitService;
 import com.alibaba.fastjson.JSON;
+import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 
 @Controller
@@ -37,8 +41,19 @@ public class ApplyController {
     @ResponseBody
     public String getList(Page page){
         DataGrid dataGrid = new DataGrid();
-        dataGrid.setRows(applyService.vo(applyService.list(page)));
-        dataGrid.setTotal(applyService.count());
+        if (SecurityUtils.getSubject().hasRole("1")) {
+            dataGrid.setRows(applyService.vo(applyService.list(page)));
+            dataGrid.setTotal(applyService.count());
+        } else {
+            List<Recruit> list = recruitService.listByEid(page,Integer.parseInt((String) SecurityUtils.getSubject().getPrincipal()));
+            List<Apply> list1 = new ArrayList<>();
+            for (Recruit recruit:
+                    list) {
+                list1.addAll(applyService.listByRid(page, recruit.getRid()));
+            }
+            dataGrid.setRows(applyService.vo(list1));
+            dataGrid.setTotal(Long.valueOf(list1.size()));
+        }
         return JSON.toJSONString(dataGrid);
     }
 

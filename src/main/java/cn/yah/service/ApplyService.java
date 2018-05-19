@@ -23,4 +23,6 @@ public interface ApplyService {
     Apply selectByPrimaryKey(Integer id);
 
     List<VoApply> vo(List<Apply> list);
+
+    List<Apply> listByRid(Page page, int id);
 }

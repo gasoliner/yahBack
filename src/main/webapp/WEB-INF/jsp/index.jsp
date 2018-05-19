@@ -31,10 +31,10 @@
     <div region="north" split="false" style="width: 100%;height: 50px;border: 0px">
         <jsp:include page="north.jsp"/>
     </div>
-    <div region="west" split="false" title="常用功能" style="width: 270px;height:100%;">
+    <div region="west" split="false" title=" &nbsp;" style="width: 270px;height:100%;">
         <jsp:include page="west.jsp"/>
     </div>
-    <div region="center" title="主体任务区" style="padding:5px;height: auto;">
+    <div region="center" title="标签栏" style="padding:5px;height: auto;">
         <div id="tt" class="easyui-tabs" style="width: 100%;height: 100%;">
             <div title="Home">
 

@@ -23,4 +23,6 @@ public interface JobfairService {
     Jobfair selectByPrimaryKey(Integer id);
 
     List<VoJobfair> vo(List<Jobfair> list);
+
+    List<Jobfair> listByEid(Page page, int i);
 }

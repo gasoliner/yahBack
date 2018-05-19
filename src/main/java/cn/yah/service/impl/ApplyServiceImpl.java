@@ -1,10 +1,7 @@
 package cn.yah.service.impl;
 
 import cn.yah.mapper.ApplyMapper;
-import cn.yah.po.Member;
-import cn.yah.po.Page;
-import cn.yah.po.Apply;
-import cn.yah.po.ApplyExample;
+import cn.yah.po.*;
 import cn.yah.service.*;
 import cn.yah.vo.VoApply;
 import com.github.pagehelper.PageHelper;
@@ -75,6 +72,18 @@ public class ApplyServiceImpl implements ApplyService {
             list1.add(voApply);
         }
         return list1;
+    }
+
+    @Override
+    public List<Apply> listByRid(Page page, int id) {
+        PageHelper.startPage(page.getPage(), page.getRows());
+        ApplyExample example = new ApplyExample();
+        ApplyExample.Criteria criteria = example.createCriteria();
+        criteria.andRidEqualTo(id);
+        List<Apply> list = applyMapper.selectByExample(example);
+        PageInfo<Apply> pageInfo = new PageInfo<>(list);
+        this.total = pageInfo.getTotal();
+        return list;   
     }
 
     @Override

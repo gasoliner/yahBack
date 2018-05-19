@@ -4,7 +4,9 @@ import cn.yah.po.Recruit;
 import cn.yah.po.DataGrid;
 import cn.yah.po.Page;
 import cn.yah.service.RecruitService;
+import cn.yah.service.UserService;
 import com.alibaba.fastjson.JSON;
+import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,6 +23,7 @@ public class RecruitController {
     @Autowired
     RecruitService recruitService;
 
+
     @RequestMapping("/ddllist")
     @ResponseBody
     public String ddlList(Page page){
@@ -31,8 +34,14 @@ public class RecruitController {
     @ResponseBody
     public String getList(Page page){
         DataGrid dataGrid = new DataGrid();
-        dataGrid.setRows(recruitService.vo(recruitService.list(page)));
-        dataGrid.setTotal(recruitService.count());
+        if (SecurityUtils.getSubject().hasRole("1")) {
+            dataGrid.setRows(recruitService.vo(recruitService.list(page)));
+            dataGrid.setTotal(recruitService.count());
+        } else {
+            dataGrid.setRows(recruitService.vo(recruitService.listByEid(page,Integer.parseInt((String) SecurityUtils.getSubject().getPrincipal()))));
+            dataGrid.setTotal(recruitService.count());
+        }
+
         return JSON.toJSONString(dataGrid);
     }
 
@@ -40,6 +49,7 @@ public class RecruitController {
     @ResponseBody
     public String add(Recruit recruit) {
         recruit.setPublishtime(new Date());
+        recruit.setEid(Integer.parseInt((String) SecurityUtils.getSubject().getPrincipal()));
         try {
             recruitService.insert(recruit);
             return JSON.toJSONString("操作成功");

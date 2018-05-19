@@ -1,9 +1,7 @@
 package cn.yah.service.impl;
 
 import cn.yah.mapper.JobfairMapper;
-import cn.yah.po.Page;
-import cn.yah.po.Jobfair;
-import cn.yah.po.JobfairExample;
+import cn.yah.po.*;
 import cn.yah.service.CategoryService;
 import cn.yah.service.EnterpriseService;
 import cn.yah.service.JobfairService;
@@ -68,6 +66,18 @@ public class JobfairServiceImpl implements JobfairService {
             list1.add(voJobfair);
         }
         return list1;
+    }
+
+    @Override
+    public List<Jobfair> listByEid(Page page, int i) {
+        PageHelper.startPage(page.getPage(), page.getRows());
+        JobfairExample example = new JobfairExample();
+        JobfairExample.Criteria criteria = example.createCriteria();
+        criteria.andEidEqualTo(i);
+        List<Jobfair> list = jobfairMapper.selectByExample(example);
+        PageInfo<Jobfair> pageInfo = new PageInfo<>(list);
+        this.total = pageInfo.getTotal();
+        return list;
     }
 
     @Override

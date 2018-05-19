@@ -23,4 +23,6 @@ public interface RecruitService {
     Recruit selectByPrimaryKey(Integer id);
 
     List<VoRecruit> vo(List<Recruit> list);
+
+    List<Recruit> listByEid(Page page, int id);
 }

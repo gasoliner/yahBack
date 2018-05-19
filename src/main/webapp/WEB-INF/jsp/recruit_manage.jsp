@@ -1,3 +1,4 @@
+<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 <%@page pageEncoding="UTF-8" language="java" %>
 <html>
 <head>
@@ -34,9 +35,11 @@
     </table>
 </div>
 <div id="toolbar">
-    <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newRecruit()">新建</a>
-    <a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editRecruit()">编辑</a>
-    <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="destroyRecruit()">删除</a>
+    <shiro:hasRole name="2">
+        <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newRecruit()">发布招聘</a>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editRecruit()">编辑招聘</a>
+    </shiro:hasRole>
+    <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="destroyRecruit()">删除招聘</a>
 </div>
 <div id="RecruitDialog" class="easyui-dialog" style="width:500px;height:550px;padding:10px 20px"
      closed="true" buttons="#Recruit-buttons">
@@ -46,16 +49,16 @@
             <label>标题</label><div>&nbsp;</div>
             <input type="text" name="name" placeholder="50字以内" class="plainText">
         </div>
-        <div class="fitem">
-            <label>发布企业&nbsp;&nbsp;&nbsp;</label><div>&nbsp;</div>
-            <input name="eid"
-                   class="easyui-combobox"
-                   data-options="
-                           valueField:'eid',
-                           textField:'name',
-                           width:300,
-                           url:'${pageContext.request.contextPath}/enterprise/ddllist'" />
-        </div>
+        <%--<div class="fitem">--%>
+            <%--<label>发布企业&nbsp;&nbsp;&nbsp;</label><div>&nbsp;</div>--%>
+            <%--<input name="eid"--%>
+                   <%--class="easyui-combobox"--%>
+                   <%--data-options="--%>
+                           <%--valueField:'eid',--%>
+                           <%--textField:'name',--%>
+                           <%--width:300,--%>
+                           <%--url:'${pageContext.request.contextPath}/enterprise/ddllist'" />--%>
+        <%--</div>--%>
         <div class="fitem">
             <label>联系人</label><div>&nbsp;</div>
             <input type="text" name="linkman" class="plainText">
