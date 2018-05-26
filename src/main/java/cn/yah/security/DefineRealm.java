@@ -47,7 +47,7 @@ public class DefineRealm extends AuthorizingRealm {
             throw new UnknownAccountException();//没找到帐号
         }
         AuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(
-                name,
+                user.getName(),
                 user.getPassword(),
                 getName()
         );
