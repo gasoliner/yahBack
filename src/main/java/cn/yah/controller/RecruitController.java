@@ -38,7 +38,7 @@ public class RecruitController {
             dataGrid.setRows(recruitService.vo(recruitService.list(page)));
             dataGrid.setTotal(recruitService.count());
         } else {
-            dataGrid.setRows(recruitService.vo(recruitService.listByEid(page,Integer.parseInt((String) SecurityUtils.getSubject().getPrincipal()))));
+            dataGrid.setRows(recruitService.vo(recruitService.listByEid(page,(Integer) SecurityUtils.getSubject().getPrincipal())));
             dataGrid.setTotal(recruitService.count());
         }
 

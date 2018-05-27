@@ -22,10 +22,10 @@ public class DefineRealm extends AuthorizingRealm {
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
         System.out.println("授予权限");
-        String id = (String)principalCollection.getPrimaryPrincipal();
+        Integer id = (Integer)principalCollection.getPrimaryPrincipal();
         SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
 
-        User user = userService.selectByPrimaryKey(Integer.parseInt(id));
+        User user = userService.selectByPrimaryKey(id);
         Set<String> roleSet = new HashSet<>();
         roleSet.add(user.getRid().toString());
 
@@ -47,7 +47,7 @@ public class DefineRealm extends AuthorizingRealm {
             throw new UnknownAccountException();//没找到帐号
         }
         AuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(
-                user.getName(),
+                user.getUid(),
                 user.getPassword(),
                 getName()
         );
