@@ -45,7 +45,7 @@ public class ApplyController {
             dataGrid.setRows(applyService.vo(applyService.list(page)));
             dataGrid.setTotal(applyService.count());
         } else {
-            List<Recruit> list = recruitService.listByEid(page,Integer.parseInt((String) SecurityUtils.getSubject().getPrincipal()));
+            List<Recruit> list = recruitService.listByEid(page,(Integer) SecurityUtils.getSubject().getPrincipal());
             List<Apply> list1 = new ArrayList<>();
             for (Recruit recruit:
                     list) {
