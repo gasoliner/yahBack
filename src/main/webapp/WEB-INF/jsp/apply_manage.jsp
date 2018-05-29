@@ -1,3 +1,4 @@
+<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 <%@page pageEncoding="UTF-8" language="java" %>
 <html>
 <head>
@@ -50,7 +51,9 @@
             <%--<th field="member.idnumber" width="50">身份证号</th>--%>
             <th field="var" width="50">状态</th>
             <th field="voResume" width="50">简历</th>
-            <th field="action" width="50">操作</th>
+            <shiro:hasRole name="2">
+                <th field="action" width="50">操作</th>
+            </shiro:hasRole>
         </tr>
         </thead>
     </table>

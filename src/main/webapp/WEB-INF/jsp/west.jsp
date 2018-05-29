@@ -22,7 +22,7 @@
                 <span>用户相关管理</span>
                 <ul>
                     <li data-options="attributes:{'url':'enterprise_lock_manage'}">未通过审批企业管理</li>
-                    <li data-options="attributes:{'url':'enterprise_manage'}">企业管理</li>
+                    <li data-options="attributes:{'url':'enterprise_manage'}">已通过审批企业管理</li>
                     <li data-options="attributes:{'url':'member_manage'}">会员管理</li>
                 </ul>
             </li>

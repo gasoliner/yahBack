@@ -49,7 +49,7 @@ public class RecruitController {
     @ResponseBody
     public String add(Recruit recruit) {
         recruit.setPublishtime(new Date());
-        recruit.setEid(Integer.parseInt((String) SecurityUtils.getSubject().getPrincipal()));
+        recruit.setEid((Integer) SecurityUtils.getSubject().getPrincipal());
         try {
             recruitService.insert(recruit);
             return JSON.toJSONString("操作成功");

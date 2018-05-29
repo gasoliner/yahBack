@@ -34,7 +34,7 @@ public class JobfairController {
             dataGrid.setRows(jobfairService.vo(jobfairService.list(page)));
             dataGrid.setTotal(jobfairService.count());
         } else {
-            dataGrid.setRows(jobfairService.vo(jobfairService.listByEid(page,Integer.parseInt((String) SecurityUtils.getSubject().getPrincipal()))));
+            dataGrid.setRows(jobfairService.vo(jobfairService.listByEid(page,(Integer) SecurityUtils.getSubject().getPrincipal())));
             dataGrid.setTotal(jobfairService.count());
         }
         return JSON.toJSONString(dataGrid);
@@ -43,7 +43,7 @@ public class JobfairController {
     @RequestMapping("/addition")
     @ResponseBody
     public String add(Jobfair jobfair) {
-        jobfair.setEid(Integer.parseInt((String) SecurityUtils.getSubject().getPrincipal()));
+        jobfair.setEid((Integer) SecurityUtils.getSubject().getPrincipal());
         try {
             jobfairService.insert(jobfair);
             return JSON.toJSONString("操作成功");
