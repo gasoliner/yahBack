@@ -2,9 +2,7 @@ package cn.yah.vo;
 
 import cn.yah.po.Enterprise;
 
-/**
- * Created by Ww on 2018/5/16.
- */
+
 public class VoEnterprise extends Enterprise {
 
     private String voImg;

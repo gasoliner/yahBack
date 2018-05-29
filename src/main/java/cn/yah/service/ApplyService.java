@@ -6,9 +6,7 @@ import cn.yah.vo.VoApply;
 
 import java.util.List;
 
-/**
- * Created by Ww on 2018/5/11.
- */
+
 public interface ApplyService {
     List<Apply> list(Page page);
 

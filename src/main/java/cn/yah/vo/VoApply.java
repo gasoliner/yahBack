@@ -3,9 +3,7 @@ package cn.yah.vo;
 import cn.yah.po.Apply;
 import cn.yah.po.Member;
 
-/**
- * Created by Ww on 2018/5/18.
- */
+
 public class VoApply extends Apply {
 
     private String voMid;
