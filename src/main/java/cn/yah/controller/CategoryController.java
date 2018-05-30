@@ -25,6 +25,7 @@ public class CategoryController {
         return JSON.toJSONString(categoryService.list(page));
     }
 
+
     @RequestMapping("/list")
     @ResponseBody
     public String getList(Page page){

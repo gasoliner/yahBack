@@ -74,6 +74,7 @@ public class ApplyServiceImpl implements ApplyService {
             }
             voApply.setAction(action);
             list1.add(voApply);
+
         }
         return list1;
     }

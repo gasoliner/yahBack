@@ -18,6 +18,7 @@ import java.util.Date;
 @RequestMapping(value = "/mail",produces = {"application/json;charset=UTF-8"} )
 public class MailController {
 
+
     @Autowired
     MailService mailService;
 

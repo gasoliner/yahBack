@@ -18,6 +18,7 @@ import java.util.Date;
 @RequestMapping(value = "/news",produces = {"application/json;charset=UTF-8"} )
 public class NewsController {
 
+
     @Autowired
     NewsService newsService;
 

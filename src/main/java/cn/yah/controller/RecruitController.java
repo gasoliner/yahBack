@@ -20,6 +20,7 @@ import java.util.Date;
 @RequestMapping(value = "/recruit",produces = {"application/json;charset=UTF-8"} )
 public class RecruitController {
 
+
     @Autowired
     RecruitService recruitService;
 

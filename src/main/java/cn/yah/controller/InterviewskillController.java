@@ -18,6 +18,7 @@ import java.util.Date;
 @RequestMapping(value = "/interviewskill",produces = {"application/json;charset=UTF-8"} )
 public class InterviewskillController {
 
+
     @Autowired
     InterviewskillService interviewskillService;
 

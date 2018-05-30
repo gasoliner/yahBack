@@ -69,6 +69,7 @@ public class EnterpriseController {
         }
     }
 
+
     @RequestMapping("/updates/{id}")
     @ResponseBody
     public String update(@PathVariable Integer id, Enterprise enterprise,@RequestParam("img_file")CommonsMultipartFile file, HttpServletRequest request) {

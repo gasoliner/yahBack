@@ -23,6 +23,7 @@ import java.io.IOException;
 @RequestMapping(value = "/member",produces = {"application/json;charset=UTF-8"} )
 public class MemberController {
 
+
     @Autowired
     MemberService memberService;
 

@@ -40,6 +40,7 @@ public class JobfairController {
         return JSON.toJSONString(dataGrid);
     }
 
+
     @RequestMapping("/addition")
     @ResponseBody
     public String add(Jobfair jobfair) {

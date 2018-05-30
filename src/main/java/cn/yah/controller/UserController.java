@@ -25,6 +25,7 @@ public class UserController {
     @Autowired
     UserService userService;
 
+
     @RequestMapping("/password")
     @ResponseBody
     public String password(Integer uid,String oldpassword,String newpassword1,String newpassword2){

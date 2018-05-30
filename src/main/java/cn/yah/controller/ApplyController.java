@@ -57,6 +57,7 @@ public class ApplyController {
         return JSON.toJSONString(dataGrid);
     }
 
+
     @RequestMapping("/addition")
     @ResponseBody
     public String add(Apply Apply) {
