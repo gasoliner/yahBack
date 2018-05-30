@@ -2,9 +2,7 @@ package cn.yah.vo;
 
 import cn.yah.po.Recruit;
 
-/**
- * Created by Ww on 2018/5/16.
- */
+
 public class VoRecruit extends Recruit {
 
     private String voEid;

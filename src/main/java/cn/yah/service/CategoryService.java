@@ -5,9 +5,7 @@ import cn.yah.po.Category;
 
 import java.util.List;
 
-/**
- * Created by Ww on 2018/5/11.
- */
+
 public interface CategoryService {
     List<Category> list(Page page);
 

@@ -2,9 +2,7 @@ package cn.yah.vo;
 
 import cn.yah.po.Jobfair;
 
-/**
- * Created by cqx on 2018/5/17.
- */
+
 public class VoJobfair extends Jobfair {
 
     private String voEid;

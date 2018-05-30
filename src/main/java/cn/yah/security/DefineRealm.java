@@ -18,10 +18,9 @@ public class DefineRealm extends AuthorizingRealm {
     @Autowired
     UserService userService;
 
-//    授权的验证
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
-        System.out.println("授予权限");
+        System.out.println("授权");
         Integer id = (Integer)principalCollection.getPrimaryPrincipal();
         SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
 
@@ -30,17 +29,13 @@ public class DefineRealm extends AuthorizingRealm {
         roleSet.add(user.getRid().toString());
 
         authorizationInfo.setRoles(roleSet);
-//        authorizationInfo.setStringPermissions(roleService.getPermissionByRid(Long.parseLong(user.getRoleidsstr())));
-
-//        System.out.println(roleService.getPermissionByRid(Long.parseLong(user.getRoleidsstr())));
 
         return authorizationInfo;
     }
 
-//    登录验证
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
-        System.out.println("登录验证中");
+        System.out.println("登录");
         String name = (String) authenticationToken.getPrincipal();
         User user = userService.selectByPrimaryKey(Integer.parseInt(name));
         if(user == null) {

@@ -6,9 +6,7 @@ import cn.yah.vo.VoMember;
 
 import java.util.List;
 
-/**
- * Created by Ww on 2018/5/11.
- */
+
 public interface MemberService {
     List<Member> list(Page page);
 

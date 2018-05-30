@@ -111,7 +111,7 @@ public class ApplyController {
         mail.setContent(content_refuse);
         mail.setName("感谢信-" + recruit.getName() + "-岗位拒信");
         mail.setReceiver(apply.getMid());
-        mail.setSender(1001);
+        mail.setSender(recruit.getEid());
         try {
             applyService.update(apply);
             mailService.insert(mail);
@@ -124,10 +124,28 @@ public class ApplyController {
     @RequestMapping("/pass/{id}")
     @ResponseBody
     public String pass(@PathVariable Integer id) {
+        String pass_content = "<h1 style=\"text-align:center;\">\n" +
+                "\t录用通知书\n" +
+                "</h1>\n" +
+                "<p>\n" +
+                "\t&nbsp;&nbsp;&nbsp;&nbsp;<span style=\"font-size:16px;\">您好，You are hired很荣幸地通知您，您被录用了。基于双方的充分沟通，公司认为您是该招聘岗位的最佳人选，特发此通知告知。请您注意后续的面试通知会发送到您的邮箱，请注意查收。</span><span style=\"font-size:16px;\">&nbsp;</span>\n" +
+                "</p>\n" +
+                "<p>\n" +
+                "\t<span style=\"font-size:16px;\">&nbsp; &nbsp; You Are Hired !<br />\n" +
+                "</span>\n" +
+                "</p>";
         Apply apply = applyService.selectByPrimaryKey(id);
+        Recruit recruit = recruitService.selectByPrimaryKey(apply.getRid());
         apply.setVar("已通过");
+        Mail mail = new Mail();
+        mail.setTime(new Date());
+        mail.setContent(pass_content);
+        mail.setName("录用函-" + recruit.getName() + "-岗位拒信");
+        mail.setReceiver(apply.getMid());
+        mail.setSender(recruit.getEid());
         try {
             applyService.update(apply);
+            mailService.insert(mail);
             return apply.getMid().toString();
         } catch (Exception e) {
             return "failed";

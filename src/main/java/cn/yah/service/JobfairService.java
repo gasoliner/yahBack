@@ -6,9 +6,7 @@ import cn.yah.vo.VoJobfair;
 
 import java.util.List;
 
-/**
- * Created by Ww on 2018/5/11.
- */
+
 public interface JobfairService {
     List<Jobfair> list(Page page);
 

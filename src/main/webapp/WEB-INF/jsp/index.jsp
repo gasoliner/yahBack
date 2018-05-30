@@ -10,7 +10,6 @@
     <link rel="stylesheet" type="text/css" href="ui/demo/demo.css">
     <script type="text/javascript" src="ui/jquery.min.js"></script>
     <script type="text/javascript" src="ui/jquery.easyui.min.js"></script>
-    <script type="text/javascript" src="ui/sdutoa.js"></script>
     <script type="text/javascript">
         function addTab(title, url){
             if ($('#tt').tabs('exists', title)){

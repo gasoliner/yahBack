@@ -2,9 +2,7 @@ package cn.yah.vo;
 
 import cn.yah.po.Member;
 
-/**
- * Created by Ww on 2018/5/18.
- */
+
 public class VoMember extends Member {
 
     private String voResume;

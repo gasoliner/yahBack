@@ -9,9 +9,6 @@
        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
     <bean id="userRealm" class="cn.yah.security.DefineRealm">
-        <!--<property name="credentialsMatcher" ref="credentialsMatcher"/>-->
-        <!--<property name="cachingEnabled" value="false"/>-->
-        <!--<property name="authorizationCachingEnabled" value="true"/>-->
     </bean>
     <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
         <property name="realm" ref="userRealm"/>

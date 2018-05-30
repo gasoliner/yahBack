@@ -6,9 +6,7 @@ import cn.yah.vo.VoEnterprise;
 
 import java.util.List;
 
-/**
- * Created by Ww on 2018/5/11.
- */
+
 public interface EnterpriseService {
     List<Enterprise> list(Page page);
 

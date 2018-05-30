@@ -6,9 +6,7 @@ import cn.yah.vo.VoMail;
 
 import java.util.List;
 
-/**
- * Created by Ww on 2018/5/11.
- */
+
 public interface MailService {
     List<Mail> list(Page page);
 
