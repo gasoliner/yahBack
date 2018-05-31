@@ -74,25 +74,25 @@
     <%--url:'${pageContext.request.contextPath}/systemddl/list/year'" />--%>
 </div>
 
-<div id="MailDialog" class="easyui-dialog" style="width:800px;height:650px;padding:10px 20px"
-     closed="true" buttons="#Mail-buttons">
-    <div class="ftitle">面试邀约邮件填写</div>
-    <form id="fm" method="post" >
-        <div class="fitem">
-            <label>标题</label><div>&nbsp;</div>
-            <input type="text" id="pass_email_name" placeholder="100字以内" class="plainText">
-        </div>
-        <input type="hidden" id="receiveId">
-        <div class="fitem">
-            <label>正文</label><div>&nbsp;</div>
-            <textarea id="pass_email_content" style="height: 550px;width: 500px;"></textarea>
-        </div>
-    </form>
-</div>
-<div id="Mail-buttons">
-    <a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="sendPassMail()">保存</a>
-    <a href="#" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#MailDialog').dialog('close')">取消</a>
-</div>
+<%--<div id="MailDialog" class="easyui-dialog" style="width:800px;height:650px;padding:10px 20px"--%>
+     <%--closed="true" buttons="#Mail-buttons">--%>
+    <%--<div class="ftitle">面试邀约邮件填写</div>--%>
+    <%--<form id="fm" method="post" >--%>
+        <%--<div class="fitem">--%>
+            <%--<label>标题</label><div>&nbsp;</div>--%>
+            <%--<input type="text" id="pass_email_name" placeholder="100字以内" class="plainText">--%>
+        <%--</div>--%>
+        <%--<input type="hidden" id="receiveId">--%>
+        <%--<div class="fitem">--%>
+            <%--<label>正文</label><div>&nbsp;</div>--%>
+            <%--<textarea id="pass_email_content" style="height: 550px;width: 500px;"></textarea>--%>
+        <%--</div>--%>
+    <%--</form>--%>
+<%--</div>--%>
+<%--<div id="Mail-buttons">--%>
+    <%--<a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="sendPassMail()">保存</a>--%>
+    <%--<a href="#" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#MailDialog').dialog('close')">取消</a>--%>
+<%--</div>--%>
 
 <div id="showApplyDialog" class="easyui-dialog" style="width:500px;height:550px;padding:10px 20px"
      closed="true" buttons="#showApplyDialog-buttons">

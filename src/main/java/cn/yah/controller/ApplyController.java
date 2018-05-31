@@ -116,7 +116,7 @@ public class ApplyController {
         try {
             applyService.update(apply);
             mailService.insert(mail);
-            return JSON.toJSONString("操作成功");
+            return JSON.toJSONString("操作成功，已拒绝");
         } catch (Exception e) {
             return JSON.toJSONString("操作失败");
         }
@@ -141,15 +141,15 @@ public class ApplyController {
         Mail mail = new Mail();
         mail.setTime(new Date());
         mail.setContent(pass_content);
-        mail.setName("录用函-" + recruit.getName() + "-岗位拒信");
+        mail.setName("录用函-" + recruit.getName() + "-简历通过信件");
         mail.setReceiver(apply.getMid());
         mail.setSender(recruit.getEid());
         try {
             applyService.update(apply);
             mailService.insert(mail);
-            return apply.getMid().toString();
+            return JSON.toJSONString("操作成功，系统已发送简历通过信件，请通过官方邮箱与求职者联系后续面试");
         } catch (Exception e) {
-            return "failed";
+            return JSON.toJSONString("操作失败");
         }
     }
 

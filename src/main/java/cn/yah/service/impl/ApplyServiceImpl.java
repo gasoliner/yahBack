@@ -70,7 +70,7 @@ public class ApplyServiceImpl implements ApplyService {
             voApply.setMember(member);
             String action = "";
             if ("未处理".equals(voApply.getVar())) {
-                action = "*<a href = \"#\" onclick=\"editInterviewOffer('" + voApply.getAid() + "')\">通过并编辑面试邀约</a>* <br/> *<a href = \"#\" onclick=\"refuseThisMan('" + voApply.getAid() + "')\">拒绝</a>*";
+                action = "*<a href = \"#\" onclick=\"passResume('" + voApply.getAid() + "')\">通过并编辑面试邀约</a>* <br/> *<a href = \"#\" onclick=\"refuseThisMan('" + voApply.getAid() + "')\">拒绝</a>*";
             }
             voApply.setAction(action);
             list1.add(voApply);

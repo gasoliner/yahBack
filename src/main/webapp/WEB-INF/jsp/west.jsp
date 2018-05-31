@@ -31,7 +31,7 @@
                 <ul>
                     <li data-options="attributes:{'url':'news_manage'}">新闻管理</li>
                     <li data-options="attributes:{'url':'interviewskill_manage'}">面试技巧管理</li>
-                    <li data-options="attributes:{'url':'special_manage'}">岗位留言管理</li>
+                    <li data-options="attributes:{'url':'leavemessage_manage'}">岗位留言管理</li>
                 </ul>
             </li>
         <li>

@@ -262,6 +262,36 @@ function showNews() {
 }
 
 
+function destroyLeavemessage() {
+    var row = $("#dg").datagrid("getSelected");
+    if (row){
+        $.messager.confirm("Confirm","确定要删除这条记录吗",function (r) {
+            if (r){
+                $("#dfm").form("submit",{
+                    url:"/leavemessage/deletion/"+row.lmid,
+                    success: function (res) {
+                        alert(res);
+                        $("#LeavemessageDialog").dialog("close");
+                        $("#dg").datagrid("reload")
+                    }
+                })
+            }
+        })
+    }
+}
+function showLeavemessage() {
+    var row = $("#dg").datagrid("getSelected");
+    if (row){
+        $("#showLeavemessageDialog").dialog("open").dialog("setTitle",row.title);
+        $("#name_content").html(row.name);
+        $("#content_content").html(row.content);
+        $("#publisher_content").html(row.publisher);
+        $("#publishtime_content").html(row.publishtime);
+    }
+}
+
+
+
 function newMail() {
     $("#fm").form("clear");
     $("#MailDialog").dialog("open").dialog("setTitle","新建");
@@ -478,14 +508,16 @@ function showApplyMember() {
         $("#voResume_content").html(row.voResume);
     }
 }
-function editInterviewOffer(id) {
+function passResume(id) {
     $.post("/apply/pass/" + id,null,function (data) {
-        if(data != 'failed') {
-            $("#receiveId").val(data);
-        }
+        alert(data);
+        $('#dg').datagrid("reload");
+        // if(data != 'failed') {
+        //     $("#receiveId").val(data);
+        // }
     });
-    $("#fm").form("clear");
-    $("#MailDialog").dialog("open").dialog("setTitle","新建");
+    // $("#fm").form("clear");
+    // $("#MailDialog").dialog("open").dialog("setTitle","新建");
 }
 function sendPassMail() {
     $.post("/mail/addition",
