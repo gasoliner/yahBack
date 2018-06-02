@@ -1,6 +1,8 @@
 package cn.yah.security;
 
+import cn.yah.po.Enterprise;
 import cn.yah.po.User;
+import cn.yah.service.EnterpriseService;
 import cn.yah.service.UserService;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
@@ -14,6 +16,9 @@ import java.util.Set;
 
 
 public class DefineRealm extends AuthorizingRealm {
+
+    @Autowired
+    EnterpriseService enterpriseService;
 
     @Autowired
     UserService userService;
@@ -40,6 +45,15 @@ public class DefineRealm extends AuthorizingRealm {
         User user = userService.selectByPrimaryKey(Integer.parseInt(name));
         if(user == null) {
             throw new UnknownAccountException();//没找到帐号
+        }
+        if (user.getRid() == 2) {
+            Enterprise enterprise = enterpriseService.selectByPrimaryKey(user.getUid());
+            if (enterprise == null) {
+                throw new UnknownAccountException();//没找到帐号
+            }
+            if (enterprise.getIslock() == 0) {
+                throw new LockedAccountException();//账号已被锁定
+            }
         }
         AuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(
                 user.getUid(),
