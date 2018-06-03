@@ -644,7 +644,7 @@ function login() {
     $("#fm").form("submit",{
         url:"/login/login",
         success:function (res) {
-            window.location.href = res;
+            window.location.href = "/";
         }
     })
 }
