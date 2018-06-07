@@ -38,6 +38,26 @@ function saveRecruit() {
         }
     })
 }
+function showRecruit() {
+    var row = $("#dg").datagrid("getSelected");
+    if (row){
+        $("#showRecruitDialog").dialog("open").dialog("setTitle",row.title);
+        $("#name_content").html(row.name);
+        $("#voEid_content").html(row.voEid);
+        $("#linkman_content").html(row.linkman);
+        $("#phone_content").html(row.phone);
+        $("#salary_content").html(row.salary);
+        $("#publishtime_content").html(row.publishtime);
+        $("#addr_content").html(row.addr);
+        $("#nature_content").html(row.nature);
+        $("#experience_content").html(row.experience);
+        $("#voCid_content").html(row.voCid);
+        $("#education_content").html(row.education);
+        $("#count_content").html(row.count);
+        $("#info_content").html(row.info);
+    }
+}
+
 
 function newCategory() {
     $("#fm").form("clear");
