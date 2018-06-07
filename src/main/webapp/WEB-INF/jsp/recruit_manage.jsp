@@ -40,6 +40,7 @@
         <a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editRecruit()">编辑招聘</a>
     </shiro:hasRole>
     <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="destroyRecruit()">删除招聘</a>
+    <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="showRecruit()">查看详细信息</a>
 </div>
 <div id="RecruitDialog" class="easyui-dialog" style="width:500px;height:550px;padding:10px 20px"
      closed="true" buttons="#Recruit-buttons">
@@ -113,7 +114,33 @@
 
 <div id="showRecruitDialog" class="easyui-dialog" style="width:500px;height:550px;padding:10px 20px"
      closed="true" buttons="#showRecruitDialog-buttons">
-    <img id="att_img"/>
+
+    <h5>标题：</h5>
+    <div id="name_content"></div>
+    <h5>发布企业：</h5>
+    <div id="voEid_content"></div>
+    <h5>联系人：</h5>
+    <div id="linkman_content"></div>
+    <h5>联系方式：</h5>
+    <div id="phone_content"></div>
+    <h5>薪水：</h5>
+    <div id="salary_content"></div>
+    <h5>发布时间：</h5>
+    <div id="publishtime_content"></div>
+    <h5>工作地址：</h5>
+    <div id="addr_content"></div>
+    <h5>工作性质：</h5>
+    <div id="nature_content"></div>
+    <h5>工作经验：</h5>
+    <div id="experience_content"></div>
+    <h5>岗位类别：</h5>
+    <div id="voCid_content"></div>
+    <h5>教育程度：</h5>
+    <div id="education_content"></div>
+    <h5>招聘人数：</h5>
+    <div id="count_content"></div>
+    <h5>简要信息：</h5>
+    <div id="info_content"></div>
 </div>
 
 <div id="showRecruitDialog-buttons">
