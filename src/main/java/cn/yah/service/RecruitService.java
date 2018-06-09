@@ -23,4 +23,8 @@ public interface RecruitService {
     List<VoRecruit> vo(List<Recruit> list);
 
     List<Recruit> listByEid(Page page, int id);
+
+    List<Recruit> listByCid(Page page, Integer cid);
+
+    List<Recruit> listByEidAndCid(Page page, Integer principal, Integer cid);
 }

@@ -31,16 +31,27 @@ public class RecruitController {
         return JSON.toJSONString(recruitService.list(page));
     }
 
-    @RequestMapping("/list")
+    @RequestMapping("/list/{cid}")
     @ResponseBody
-    public String getList(Page page){
+    public String getList(Page page,@PathVariable Integer cid){
         DataGrid dataGrid = new DataGrid();
         if (SecurityUtils.getSubject().hasRole("1")) {
-            dataGrid.setRows(recruitService.vo(recruitService.list(page)));
-            dataGrid.setTotal(recruitService.count());
+            if (cid == 0) {
+                dataGrid.setRows(recruitService.vo(recruitService.list(page)));
+                dataGrid.setTotal(recruitService.count());
+            } else {
+                dataGrid.setRows(recruitService.vo(recruitService.listByCid(page,cid)));
+                dataGrid.setTotal(recruitService.count());
+            }
+
         } else {
-            dataGrid.setRows(recruitService.vo(recruitService.listByEid(page,(Integer) SecurityUtils.getSubject().getPrincipal())));
-            dataGrid.setTotal(recruitService.count());
+            if (cid == 0) {
+                dataGrid.setRows(recruitService.vo(recruitService.listByEid(page,(Integer) SecurityUtils.getSubject().getPrincipal())));
+                dataGrid.setTotal(recruitService.count());
+            } else {
+                dataGrid.setRows(recruitService.vo(recruitService.listByEidAndCid(page,(Integer) SecurityUtils.getSubject().getPrincipal(),cid)));
+                dataGrid.setTotal(recruitService.count());
+            }
         }
 
         return JSON.toJSONString(dataGrid);

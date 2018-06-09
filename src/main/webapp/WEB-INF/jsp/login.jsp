@@ -19,6 +19,10 @@
 
         <form id="fm" method="post">
             <div style="font-size:16px;margin-left:500px;margin-right:500px;">
+                <div style="color: red">${failed_info}</div>
+                <%
+                    request.getSession().removeAttribute("failed_info");
+                %>
                 <div class="fitem">
                     <label>账号&nbsp;&nbsp;&nbsp;</label>
                     <div style="height: 5px;">&nbsp;</div>

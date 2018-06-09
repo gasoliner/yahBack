@@ -87,6 +87,31 @@ public class RecruitServiceImpl implements RecruitService {
     }
 
     @Override
+    public List<Recruit> listByCid(Page page, Integer cid) {
+        PageHelper.startPage(page.getPage(), page.getRows());
+        RecruitExample example = new RecruitExample();
+        RecruitExample.Criteria criteria = example.createCriteria();
+        criteria.andCidEqualTo(cid);
+        List<Recruit> list = recruitMapper.selectByExample(example);
+        PageInfo<Recruit> pageInfo = new PageInfo<>(list);
+        this.total = pageInfo.getTotal();
+        return list;
+    }
+
+    @Override
+    public List<Recruit> listByEidAndCid(Page page, Integer principal, Integer cid) {
+        PageHelper.startPage(page.getPage(), page.getRows());
+        RecruitExample example = new RecruitExample();
+        RecruitExample.Criteria criteria = example.createCriteria();
+        criteria.andEidEqualTo(principal);
+        criteria.andCidEqualTo(cid);
+        List<Recruit> list = recruitMapper.selectByExample(example);
+        PageInfo<Recruit> pageInfo = new PageInfo<>(list);
+        this.total = pageInfo.getTotal();
+        return list;
+    }
+
+    @Override
     public Recruit selectByPrimaryKey(Integer id) {
         return recruitMapper.selectByPrimaryKey(id);
     }

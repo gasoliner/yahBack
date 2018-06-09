@@ -47,6 +47,7 @@ public class LoginController {
             session.setAttribute("user",user);
             return "/";
         }catch (Exception e){
+            session.setAttribute("failed_info","用户名或者密码错误，请检查后重试");
             return "/login";
         }
     }

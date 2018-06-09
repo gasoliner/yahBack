@@ -4,6 +4,17 @@
 <head>
     <title>attraction_manage</title>
     <jsp:include page="header.jsp"/>
+    <script type="text/javascript">
+        $(function () {
+            $('#searchInput').combobox({
+                onChange: function(){
+                    $("#dg").datagrid({
+                        url:'/recruit/list/'+$("#searchInput").combobox("getValue")
+                    });
+                }
+            });
+        });
+    </script>
 </head>
 <body>
 <div align="center">
@@ -11,7 +22,7 @@
            toolbar="#toolbar"
            fitColumns="true" singleSelect="true" pagination="true"
            data-options="rownumbers:true,
-            url:'/recruit/list',
+            url:'/recruit/list/0',
             method:'get',
             pageSize:15,
             pageList:[5,10,15,20,25]">
@@ -41,6 +52,15 @@
     </shiro:hasRole>
     <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="destroyRecruit()">删除招聘</a>
     <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="showRecruit()">查看详细信息</a>
+    <label>按岗位类别查询</label>
+    <input id="searchInput"
+           name="123"
+           class="easyui-combobox"
+           data-options="
+                           valueField:'cid',
+                           textField:'name',
+                           width:300,
+                           url:'${pageContext.request.contextPath}/category/ddllist'" />
 </div>
 <div id="RecruitDialog" class="easyui-dialog" style="width:500px;height:550px;padding:10px 20px"
      closed="true" buttons="#Recruit-buttons">
